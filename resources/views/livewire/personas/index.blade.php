@@ -1,9 +1,4 @@
 <div>
-    @if (session()->has('message'))
-    <div class="alert alert-success" style="margin-top:30px;">x
-        {{ session('message') }}
-    </div>
-    @endif
     <div class="mb-3 d-flex justify-content-between row">
         <div class="col">
             <x-jet-input placeholder="Buscar socio" type="text" />
@@ -21,15 +16,17 @@
             </select>
         </div>
     </div>
+
     <div class="d-flex justify-content-between">
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-danger px-4">Exportar carnets</button>
             <button type="button" class="btn btn-warning px-4">Exportar PDF</button>
             <button type="button" class="btn btn-success px-4">Exportar Excel</button>
         </div>
-        <a href="{{route('personas.create')}}">Crear</a>
-        {{-- @livewire('personas.crear') --}}
+
+        <a class="btn btn-success" href="{{route('personas.create')}}">Registrar persona</a>
     </div>
+
     <table class="table mt-3">
         <thead>
             <tr class="text-center">

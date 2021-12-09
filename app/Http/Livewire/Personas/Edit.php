@@ -5,8 +5,9 @@ namespace App\Http\Livewire\Personas;
 use App\Models\sys\Persona;
 use Livewire\Component;
 
-class Editar extends Component
+class Edit extends Component
 {
+
     public $persona;
 
     public function mount($id)
@@ -16,6 +17,6 @@ class Editar extends Component
 
     public function render()
     {
-        return view('livewire.personas.editar');
+        return view('livewire.personas.edit');
     }
 }

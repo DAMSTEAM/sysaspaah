@@ -6,7 +6,7 @@ use App\Models\sys\Persona;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Personas extends Component
+class Index extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -20,6 +20,6 @@ class Personas extends Component
         $links = $this->personas;
         $this->personas = collect($this->personas->items());
 
-        return view('livewire.personas.personas', ['personas' => compact($this->personas), 'links' => $links]);
+        return view('livewire.personas.index', ['personas' => compact($this->personas), 'links' => $links]);
     }
 }

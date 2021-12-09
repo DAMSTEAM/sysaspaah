@@ -10,7 +10,7 @@
 
 @section('content')
 
-@livewire('personas.editar', ['id' => $id])
+@livewire('personas.edit', ['id' => $id])
 
 @stop
 

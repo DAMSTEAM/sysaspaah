@@ -2,19 +2,18 @@
 
 namespace App\Http\Livewire\Personas;
 
-use App\Models\sys\Persona;
 use Livewire\Component;
 
-class Crear extends Component
+class Create extends Component
 {
     public $NO_SOCIO, $AP_PATERNO, $AP_MATERNO, $CO_DNI, $NU_CELULAR, $TI_SEXO, $FE_NACIMIENTO, $ID_PERSONA;
 
     public function render()
     {
-        return view('livewire.personas.crear');
+        return view('livewire.personas.create');
     }
 
-/*     public function save() {
+    /*     public function save() {
 
         Persona::create([
             'NO_SOCIO' => $this->NO_SOCIO,
@@ -28,5 +27,4 @@ class Crear extends Component
 
         $this->emit('render');
     } */
-
 }

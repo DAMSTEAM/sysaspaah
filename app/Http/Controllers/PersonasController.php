@@ -23,7 +23,7 @@ class PersonasController extends Controller
      */
     public function create()
     {
-        //
+        return view('sys.personas.create');
     }
 
     /**
