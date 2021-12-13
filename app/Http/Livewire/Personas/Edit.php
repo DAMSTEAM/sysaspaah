@@ -44,7 +44,7 @@ class Edit extends Component
         $this->validate();
 
         $persona = Persona::find($this->ID_PERSONA);
-        
+
         $persona->update([
             'NO_SOCIO' => $this->NO_SOCIO,
             'AP_PATERNO' => $this->AP_PATERNO,
@@ -54,5 +54,9 @@ class Edit extends Component
             'TI_SEXO' => $this->TI_SEXO,
             'FE_NACIMIENTO' => $this->FE_NACIMIENTO
         ]);
+    }
+
+    public function updated($props) {
+        $this->validateOnly($props);
     }
 }
