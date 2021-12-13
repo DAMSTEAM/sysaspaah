@@ -10,7 +10,7 @@
 
 @section('content')
 
-@livewire('personas.index')
+@livewire('personas.show', ['id' => $id])
 
 @stop
 

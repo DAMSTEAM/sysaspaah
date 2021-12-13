@@ -23,7 +23,6 @@ class PersonaFactory extends Factory
             'AP_MATERNO' => $this->faker->lastName,
             'CO_DNI' => $this->faker->randomNumber($nbDigits = 8),
             'NU_CELULAR' => $this->faker->randomNumber($nbDigits = 9),
-            'FI_DNI' => $this->faker->mimeType,
             'TI_SEXO' => $this->faker->randomElement(array ('1','2')),
             'FE_NACIMIENTO' => $this->faker->date('Y-m-d', 'now')
         ];

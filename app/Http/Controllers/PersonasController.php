@@ -45,7 +45,7 @@ class PersonasController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('sys.personas.show', compact('id'));
     }
 
     /**

@@ -20,7 +20,6 @@ class CreateMaePersonasTable extends Migration
             $table->string('AP_MATERNO', 80);
             $table->integer('CO_DNI');
             $table->integer('NU_CELULAR');
-            $table->string('FI_DNI', 200);
             $table->char('TI_SEXO', 1);
             $table->date('FE_NACIMIENTO');
             $table->timestamps();

@@ -19,9 +19,5 @@
 @stop
 
 @section('js')
-<script type="text/javascript">
-    window.livewire.on('userStore', () => {
-        $('#exampleModal').modal('hide');
-    });
-</script>
+
 @stop

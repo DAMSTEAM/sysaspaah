@@ -16,6 +16,7 @@ class Persona extends Model
     public $incrementing = true;
 
     protected $guarded = ['ID_PERSONA'];
+    /* protected $fillable = ['NO_SOCIO', 'AP_PATERNO', 'AP_MATERNO', 'CO_DNI', 'NU_CELULAR', 'TI_SEXO', 'FE_NACIMIENTO']; */
 
     public function socio() {
         return $this->hasOne('App\Models\sys\Socio', 'FK_SOCIO', 'ID_SOCIO');

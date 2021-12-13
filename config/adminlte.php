@@ -263,6 +263,7 @@ return [
             'text' => 'Personas',
             'route'  => 'personas.index',
             'icon' => 'fas fa-fw fa-lock',
+            'active' => ['personas/*'],
         ],
         [
             'text' => 'Socios',
