@@ -11,7 +11,7 @@ class Persona extends Model
 
     protected $table = "mae_personas";
 
-    protected $primary_key = 'ID_PERSONA';
+    protected $primaryKey = 'ID_PERSONA';
 
     public $incrementing = true;
 

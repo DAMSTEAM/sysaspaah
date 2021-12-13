@@ -2,16 +2,27 @@
 
 @section('title', 'Personas')
 
+@section('plugins.Sweetalert2', true)
+
 @section('content_header')
 
-<h1>Gestión de personas</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <h1>Registrar persona</h1>
+    </div>
+    <div class="col-sm-6 d-none d-sm-block">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active"><a href="/personas">Personas</a></li>
+        </ol>
+    </div>
+</div>
 
 @stop
 
 @section('content')
 
 @livewire('personas.index')
-
+<x-livewire-alert::scripts />
 @stop
 
 @section('css')

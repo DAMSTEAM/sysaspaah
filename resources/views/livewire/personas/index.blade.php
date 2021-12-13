@@ -8,18 +8,11 @@
             <x-jet-input placeholder="Buscar socio" type="date" class="ml-2" wire:model.self="feFin" />
             <button wire:click="socioListarDate()" class="btn btn-success btn-sm form-control ml-2">Listar por
                 fechas</button>
-            <p>{{$test}}</p>
-{{--             @if (count($personasFE) > 1)
-            @foreach ($personasFE as $per)
-            <p>{{$per->NO_SOCIO}}</p>
-            @endforeach
-            @endif --}}
         </div>
     </div>
 
     <div class="d-flex justify-content-between">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-danger px-4">Exportar carnets</button>
             <button type="button" class="btn btn-warning px-4">Exportar PDF</button>
             <button type="button" class="btn btn-success px-4">Exportar Excel</button>
         </div>
@@ -48,7 +41,13 @@
                 <td>{{ $persona->NO_SOCIO }}</td>
                 <td>{{ $persona->CO_DNI }}</td>
                 <td>{{ $persona->NU_CELULAR }}</td>
-                <td>{{ $persona->TI_SEXO }}</td>
+                <td>
+                    @if ($persona->TI_SEXO == '1')
+                    <i class="fas fa-mars text-info fa-2x"></i>
+                    @else
+                    <i class="fas fa-venus text-danger fa-2x"></i>
+                    @endif
+                </td>
                 <td>{{ $persona->FE_NACIMIENTO }}</td>
                 <td class="text-center">
                     <div class="btn-group" role="group">
@@ -70,10 +69,5 @@
         @if ($links->links())
         {{$links->links()}}
         @endif
-    </div>
-    <div>
-        <x-jet-input placeholder="Buscar socio" type="text" wire:model.self="palabraReq" class="mb-2" />
-
-        <button wire:click="saveRequisito()" class="btn btn-success btn-sm">Agregar requisito</button>
     </div>
 </div>

@@ -9,39 +9,27 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public $palabraBuscar;
-    public $feInicio;
-    public $feFin;
-    public $tipo;
-    public $test;
-    public $personasFE = [];
-    public $reqTBL = [];
-    public $palabraReq;
-    public $v_id;
-
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
 
-    public $personas, $NO_SOCIO, $AP_PATERNO, $AP_MATERNO, $CO_DNI, $NU_CELULAR, $TI_SEXO, $FE_NACIMIENTO, $ID_PERSONA;
-    public $updateMode = false;
+    public $palabraBuscar, $personas;
+
+    public $NO_SOCIO, $AP_PATERNO, $AP_MATERNO, $CO_DNI, $NU_CELULAR, $TI_SEXO, $FE_NACIMIENTO, $ID_PERSONA;
 
     public function render()
     {
-        $this->personas = Persona::latest()->where('NO_SOCIO', 'like', '%' . $this->palabraBuscar . '%')->paginate(5);
+        $this->personas = Persona::where('NO_SOCIO', 'like', '%' . $this->palabraBuscar . '%')
+        ->orderBy('ID_PERSONA', 'desc')->paginate(10);
+        
         $links = $this->personas;
         $this->personas = collect($this->personas->items());
 
         return view('livewire.personas.index', ['personas' => compact($this->personas), 
-        'links' => $links, 'personasFE' => compact($this->personasFE)]);
+        'links' => $links]);
     }
-
+/* 
     public function saveRequisito() {
         $this->reqTBL = DB::select("call SP_INS_REQUISITOS('$this->palabraReq', @status)");
-    }
-
-/*     public function socioListarDate() {
-        if (!empty($this->feInicio) && !empty($this->feFin)) {
-            $this->personasFE = DB::select("call SP_RANGO_FECHA('$this->feInicio', '$this->feFin', 'MAE_PERSONAS', 'FE_NACIMIENTO')"); 
-        }
     } */
 }
