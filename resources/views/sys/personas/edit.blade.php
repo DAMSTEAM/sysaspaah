@@ -2,6 +2,8 @@
 
 @section('title', 'Personas')
 
+@section('plugins.Sweetalert2', true)
+
 @section('content_header')
 
 <div class="row">
@@ -22,6 +24,7 @@
 
 @livewire('personas.edit', ['id' => $id])
 
+<x-livewire-alert::scripts />
 @stop
 
 @section('css')

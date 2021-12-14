@@ -38,7 +38,7 @@
             @foreach($personas as $persona)
             <tr class="text-center">
                 <td>{{ $persona->ID_PERSONA }}</td>
-                <td>{{ $persona->NO_SOCIO }}</td>
+                <td>{{ $persona->NO_SOCIO }} {{ $persona->AP_PATERNO }} {{ $persona->AP_MATERNO }}</td>
                 <td>{{ $persona->CO_DNI }}</td>
                 <td>{{ $persona->NU_CELULAR }}</td>
                 <td>

@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Personas;
 
 use App\Models\sys\Persona;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Edit extends Component
 {
+    use LivewireAlert;
+    
     public $persona;
 
     public $NO_SOCIO, $AP_PATERNO, $AP_MATERNO, $CO_DNI, $NU_CELULAR, $TI_SEXO, $FE_NACIMIENTO, $ID_PERSONA;
@@ -19,6 +22,10 @@ class Edit extends Component
         'NU_CELULAR' => 'required|max:9',
         'TI_SEXO' => 'required|in:1, 2',
         'FE_NACIMIENTO' => 'required'
+    ];
+
+    protected $listeners = [
+        'update'
     ];
 
     public function mount($id)
@@ -40,6 +47,25 @@ class Edit extends Component
         return view('livewire.personas.edit');
     }
 
+    public function edit() {
+        $this->alert('warning', '¿Desea actualizar?', [
+            'position' => 'center',
+            'timer' => null,
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => 'update',
+            'showCancelButton' => true,
+            'onDismissed' => '',
+            'cancelButtonColor' => '#d33',
+            'text' => 'Los datos nuevos, remplazarán los datos antiguos',
+            'confirmButtonColor' => '#3085d6'
+        ]);
+    }
+
+    public function updated($props) {
+        $this->validateOnly($props);
+    }
+
     public function update() {
         $this->validate();
 
@@ -54,9 +80,12 @@ class Edit extends Component
             'TI_SEXO' => $this->TI_SEXO,
             'FE_NACIMIENTO' => $this->FE_NACIMIENTO
         ]);
-    }
 
-    public function updated($props) {
-        $this->validateOnly($props);
+        $this->flash('success','¡Se actualizó!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+            'text' => 'Se actualizó correctamente la persona',
+        ], '/personas');
     }
 }

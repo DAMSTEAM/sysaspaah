@@ -91,7 +91,7 @@
             <a class="btn btn-secondary btn-block" href="{{route('personas.index')}}">
                 Cancelar
             </a>
-            <button class="btn btn-success btn-block" wire:click="update" type="button" wire:loading.attr="disabled"
+            <button class="btn btn-success btn-block" wire:click="edit" type="button" wire:loading.attr="disabled"
                 wire:target="update">
                 Actualizar <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                     wire:loading></span>
