@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\sys\Persona;
 use Illuminate\Http\Request;
-use App\Exports\PersonasExport;
-use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
-use PDF;
 
-class PersonasController extends Controller
+class SociosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +13,7 @@ class PersonasController extends Controller
      */
     public function index()
     {
-        return view('sys.personas.index');
+        //
     }
 
     /**
@@ -28,7 +23,7 @@ class PersonasController extends Controller
      */
     public function create()
     {
-        return view('sys.personas.create');
+        //
     }
 
     /**
@@ -50,7 +45,7 @@ class PersonasController extends Controller
      */
     public function show($id)
     {
-        return view('sys.personas.show', compact('id'));
+        //
     }
 
     /**
@@ -61,7 +56,7 @@ class PersonasController extends Controller
      */
     public function edit($id)
     {
-        return view('sys.personas.edit', compact('id'));
+        //
     }
 
     /**
@@ -85,16 +80,5 @@ class PersonasController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function excel() {
-        return Excel::download(new PersonasExport, 'personas.xlsx');
-    }
-
-    public function pdf() {
-        $personas = Persona::all();
-        $pdf = PDF::loadView('sys.personas.exports.pdf', compact('personas'));
-        $pdf->setPaper('a4', 'landscape');
-        return $pdf->stream('personas.pdf');
     }
 }

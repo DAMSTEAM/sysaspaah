@@ -19,7 +19,7 @@ class Index extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $palabraBuscar, $tipoBuscar = 0, $personas;
+    public $palabraBuscar, $tipoBuscar = 3, $personas;
 
     public $NO_SOCIO, $AP_PATERNO, $AP_MATERNO, $CO_DNI, $NU_CELULAR, $TI_SEXO, $FE_NACIMIENTO, $ID_PERSONA;
 

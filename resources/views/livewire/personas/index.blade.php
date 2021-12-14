@@ -7,9 +7,9 @@
             <div class="form-group">
                 <select class="form-control" wire:model="tipoBuscar">
                     <option value="0">Seleccione tipo...</option>
-                    <option value="1" selected>Nombres y apellidos</option>
+                    <option value="1">Nombres y apellidos</option>
                     <option value="2">DNI</option>
-                    <option value="3">Cod.</option>
+                    <option value="3" selected>Cod.</option>
                 </select>
             </div>
         </div>

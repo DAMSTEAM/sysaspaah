@@ -29,9 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('personas/pdf', [PersonasController::class, 'pdf'])->name('personas.pdf');
     Route::resource('personas', PersonasController::class);
 
-    Route::view('/solicitudes','livewire.vistas.solicitudes')->name('solicitudes');
-    Route::view('/socios','livewire.vistas.socios')->name('socios');
-    Route::view('/inscripciones','livewire.vistas.inscripciones')->name('inscripciones');
-    Route::view('/asistencias','livewire.vistas.asistencias')->name('asistencias');
-    Route::view('/eventos','livewire.vistas.eventos')->name('eventos');
+    Route::get('socios/excel', [SocioController::class, 'excel'])->name('socios.excel');
+    Route::get('socios/pdf', [SocioController::class, 'pdf'])->name('socios.pdf');
+    Route::resource('socios', SocioController::class);
 });
