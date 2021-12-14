@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\sys\Persona;
 use Illuminate\Http\Request;
+use App\Exports\PersonasExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class PersonasController extends Controller
 {
@@ -81,5 +85,15 @@ class PersonasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function excel() {
+        return Excel::download(new PersonasExport, 'personas.xlsx');
+    }
+
+    public function pdf() {
+        $personas = Persona::all();
+        $pdf = PDF::loadView('sys.personas.exports.pdf', compact('personas'));
+        return $pdf->stream('personas.pdf');
     }
 }

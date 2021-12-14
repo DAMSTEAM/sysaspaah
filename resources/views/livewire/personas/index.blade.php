@@ -14,7 +14,7 @@
     <div class="d-flex justify-content-between">
         <div class="btn-group" role="group">
             <a type="button" class="btn btn-warning px-4" href="{{route('personas.pdf')}}">Exportar PDF</a>
-            <button type="button" class="btn btn-success px-4">Exportar Excel</button>
+            <a type="button" class="btn btn-success px-4" href="{{route('personas.excel')}}">Exportar Excel</a>
         </div>
 
         <a class="btn btn-success" href="{{route('personas.create')}}">

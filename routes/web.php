@@ -25,7 +25,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('personas/pdf', [PersonaPdf::class, 'pdf'])->name('personas.pdf');
+    Route::get('personas/excel', [PersonasController::class, 'excel'])->name('personas.excel');
+    Route::get('personas/pdf', [PersonasController::class, 'pdf'])->name('personas.pdf');
     Route::resource('personas', PersonasController::class);
 
     Route::view('/solicitudes','livewire.vistas.solicitudes')->name('solicitudes');
