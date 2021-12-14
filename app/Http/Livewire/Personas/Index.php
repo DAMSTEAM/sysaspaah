@@ -19,15 +19,28 @@ class Index extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $palabraBuscar, $personas;
+    public $palabraBuscar, $tipoBuscar = 0, $personas;
 
     public $NO_SOCIO, $AP_PATERNO, $AP_MATERNO, $CO_DNI, $NU_CELULAR, $TI_SEXO, $FE_NACIMIENTO, $ID_PERSONA;
 
     public function render()
     {
-        $this->personas = Persona::where('NO_SOCIO', 'like', '%' . $this->palabraBuscar . '%')
-        ->orderBy('ID_PERSONA', 'desc')->paginate(10);
-        
+        if ($this->tipoBuscar == '0') {
+            $this->personas = Persona::where('NO_SOCIO', 'like', '%' . $this->palabraBuscar . '%')
+            ->orderBy('NO_SOCIO', 'desc')->paginate(10); 
+        } else if ($this->tipoBuscar == '1') {
+            $this->personas = Persona::where('NO_SOCIO', 'like', '%' . $this->palabraBuscar . '%')
+            ->orWhere('AP_PATERNO', 'like', '%' . $this->palabraBuscar . '%')
+            ->orWhere('AP_MATERNO', 'like', '%' . $this->palabraBuscar . '%')
+            ->orderBy('NO_SOCIO', 'desc')->paginate(10); 
+        } else if($this->tipoBuscar == '2') {
+            $this->personas = Persona::where('CO_DNI', 'like', '%' . $this->palabraBuscar . '%')
+            ->orderBy('CO_DNI', 'desc')->paginate(10); 
+        } else {
+            $this->personas = Persona::where('ID_PERSONA', 'like', '%' . $this->palabraBuscar . '%')
+            ->orderBy('ID_PERSONA', 'desc')->paginate(10); 
+        }
+
         $links = $this->personas;
         $this->personas = collect($this->personas->items());
 

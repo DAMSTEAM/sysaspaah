@@ -1,20 +1,26 @@
 <div>
     <div class="mb-3 d-flex justify-content-between row">
-        <div class="col">
+        <div class="col-8">
             <x-jet-input placeholder="Buscar socio" type="text" wire:model="palabraBuscar" />
         </div>
-        <div class="d-flex col">
-            <x-jet-input placeholder="Buscar socio" type="date" wire:model.self="feInicio" />
-            <x-jet-input placeholder="Buscar socio" type="date" class="ml-2" wire:model.self="feFin" />
-            <button wire:click="socioListarDate()" class="btn btn-success btn-sm form-control ml-2">Listar por
-                fechas</button>
+        <div class="col-4">
+            <div class="form-group">
+                <select class="form-control" wire:model="tipoBuscar">
+                    <option value="0">Seleccione tipo...</option>
+                    <option value="1" selected>Nombres y apellidos</option>
+                    <option value="2">DNI</option>
+                    <option value="3">Cod.</option>
+                </select>
+            </div>
         </div>
     </div>
 
     <div class="d-flex justify-content-between">
         <div class="btn-group" role="group">
-            <a type="button" class="btn btn-warning px-4" href="{{route('personas.pdf')}}">Exportar PDF</a>
-            <a type="button" class="btn btn-success px-4" href="{{route('personas.excel')}}">Exportar Excel</a>
+            <a type="button" class="btn btn-outline-warning px-4" href="{{route('personas.pdf')}}">
+                Exportar <i class="far fa-file-pdf fa-lg ml-1"></i></a>
+            <a type="button" class="btn btn-outline-success px-4" href="{{route('personas.excel')}}">
+                Exportar <i class="far fa-file-excel fa-lg ml-1"></i></a>
         </div>
 
         <a class="btn btn-success" href="{{route('personas.create')}}">
