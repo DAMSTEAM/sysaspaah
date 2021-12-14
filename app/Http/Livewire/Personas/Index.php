@@ -65,7 +65,6 @@ class Index extends Component
             'text' => 'Se eliminó correctamente la persona',
         ], '/personas');
     }
-
 /* 
     public function saveRequisito() {
         $this->reqTBL = DB::select("call SP_INS_REQUISITOS('$this->palabraReq', @status)");

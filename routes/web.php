@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\exports\PersonaPdf;
 use App\Http\Controllers\PersonasController;
-use App\Http\Livewire\Personas\Crear;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('personas/pdf', [PersonaPdf::class, 'pdf'])->name('personas.pdf');
     Route::resource('personas', PersonasController::class);
-    
+
     Route::view('/solicitudes','livewire.vistas.solicitudes')->name('solicitudes');
     Route::view('/socios','livewire.vistas.socios')->name('socios');
     Route::view('/inscripciones','livewire.vistas.inscripciones')->name('inscripciones');
