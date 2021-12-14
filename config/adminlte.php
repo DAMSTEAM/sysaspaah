@@ -267,28 +267,15 @@ return [
         ],
         [
             'text' => 'Socios',
-            'route'  => 'socios',
+            'route'  => 'socios.index',
             'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Solicitudes',
-            'route'  => 'solicitudes',
-            'icon' => 'fas fa-fw fa-lock',
+            'active' => ['socios/*'],
         ],
         [
             'text' => 'Inscripciones',
-            'route'  => 'inscripciones',
+            'route'  => 'inscripciones.index',
             'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Asistencias',
-            'route'  => 'asistencias',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Eventos',
-            'route'  => 'eventos',
-            'icon' => 'fas fa-fw fa-lock',
+            'active' => ['inscripciones/*'],
         ],
         [
             'text'    => 'multilevel',

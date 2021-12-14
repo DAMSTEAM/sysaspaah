@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\exports\PersonaPdf;
+use App\Http\Controllers\InscripcionesController;
 use App\Http\Controllers\PersonasController;
+use App\Http\Controllers\SociosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('personas/pdf', [PersonasController::class, 'pdf'])->name('personas.pdf');
     Route::resource('personas', PersonasController::class);
 
-    Route::get('socios/excel', [SocioController::class, 'excel'])->name('socios.excel');
-    Route::get('socios/pdf', [SocioController::class, 'pdf'])->name('socios.pdf');
-    Route::resource('socios', SocioController::class);
+    Route::get('socios/excel', [SociosController::class, 'excel'])->name('socios.excel');
+    Route::get('socios/pdf', [SociosController::class, 'pdf'])->name('socios.pdf');
+    Route::resource('socios', SociosController::class);
+
+    Route::get('inscripciones/excel', [InscripcionesController::class, 'excel'])->name('inscripciones.excel');
+    Route::get('inscripciones/pdf', [InscripcionesController::class, 'pdf'])->name('inscripciones.pdf');
+    Route::resource('inscripciones', InscripcionesController::class);
 });

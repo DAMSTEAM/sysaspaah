@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\sys\Inscripcion;
 use Illuminate\Http\Request;
 use App\Exports\PersonasExport;
 use App\Http\Controllers\Controller;
-use App\Models\sys\Socio;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
-class SociosController extends Controller
+class InscripcionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class SociosController extends Controller
      */
     public function index()
     {
-        return view('sys.socios.index');
+        return view('sys.personas.index');
     }
 
     /**
@@ -28,7 +28,7 @@ class SociosController extends Controller
      */
     public function create()
     {
-        return view('sys.socios.create');
+        return view('sys.personas.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class SociosController extends Controller
      */
     public function show($id)
     {
-        return view('sys.socios.show', compact('id'));
+        return view('sys.personas.show', compact('id'));
     }
 
     /**
@@ -61,7 +61,7 @@ class SociosController extends Controller
      */
     public function edit($id)
     {
-        return view('sys.socios.edit', compact('id'));
+        return view('sys.personas.edit', compact('id'));
     }
 
     /**
@@ -92,7 +92,7 @@ class SociosController extends Controller
     }
 
     public function pdf() {
-        $personas = Socio::all();
+        $personas = Inscripcion::all();
         $pdf = PDF::loadView('sys.personas.exports.pdf', compact('personas'));
         $pdf->setPaper('a4', 'landscape');
         return $pdf->stream('personas.pdf');
