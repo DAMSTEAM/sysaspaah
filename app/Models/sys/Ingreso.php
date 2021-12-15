@@ -16,4 +16,8 @@ class Ingreso extends Model
     public $incrementing = true;
 
     protected $guarded = ['ID_INGRESO'];
+
+    public function inscripcion() {
+        return $this->hasOne('App\Models\sys\Inscripcion', 'FK_INGRESO', 'ID_INSCRIPCION');
+    }
 }

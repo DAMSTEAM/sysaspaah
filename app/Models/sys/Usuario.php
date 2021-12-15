@@ -9,7 +9,7 @@ class Usuario extends Model
 {
     protected $table = "mae_usuarios";
 
-    protected $primary_key = 'ID_USUARIO';
+    protected $primaryKey = 'ID_USUARIO';
 
     public $incrementing = true;
 

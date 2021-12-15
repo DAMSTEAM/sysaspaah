@@ -22,6 +22,6 @@ class RequisitoInscripcion extends Model
     }
 
     public function inscripcion() {
-        return $this->belongsTo('App\Models\sys\Inscripcion', 'FK_INSCRIPCION', 'ID_REQUISITO_INSCRIPCION');
+        return $this->belongsTo('App\Models\sys\Inscripcion', 'FK_INSCRIPCION', 'ID_INSCRIPCION');
     }
 }

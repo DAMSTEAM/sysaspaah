@@ -18,7 +18,7 @@ class InscripcionesController extends Controller
      */
     public function index()
     {
-        return view('sys.personas.index');
+        return view('sys.inscripciones.index');
     }
 
     /**
@@ -28,7 +28,7 @@ class InscripcionesController extends Controller
      */
     public function create()
     {
-        return view('sys.personas.create');
+        return view('sys.inscripciones.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class InscripcionesController extends Controller
      */
     public function show($id)
     {
-        return view('sys.personas.show', compact('id'));
+        return view('sys.inscripciones.show', compact('id'));
     }
 
     /**
@@ -61,7 +61,7 @@ class InscripcionesController extends Controller
      */
     public function edit($id)
     {
-        return view('sys.personas.edit', compact('id'));
+        return view('sys.inscripciones.edit', compact('id'));
     }
 
     /**
@@ -93,7 +93,7 @@ class InscripcionesController extends Controller
 
     public function pdf() {
         $personas = Inscripcion::all();
-        $pdf = PDF::loadView('sys.personas.exports.pdf', compact('personas'));
+        $pdf = PDF::loadView('sys.inscripciones.exports.pdf', compact('personas'));
         $pdf->setPaper('a4', 'landscape');
         return $pdf->stream('personas.pdf');
     }

@@ -53,7 +53,7 @@ class Index extends Component
         $this->ID_PERSONA = $id;
         $this->alert('question', '¿Desea eliminar?', [
             'position' => 'center',
-            'timer' => null,
+            'timer'  => null,
             'toast' => false,
             'showConfirmButton' => true,
             'onConfirmed' => 'destroy',

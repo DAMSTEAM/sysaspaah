@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Personas')
+@section('title', 'Inscripciones')
 
 @section('plugins.Sweetalert2', true)
 
@@ -8,11 +8,12 @@
 
 <div class="row">
     <div class="col-sm-6">
-        <h1>Gestión de personas</h1>
+        <h1>Editar inscripción</h1>
     </div>
     <div class="col-sm-6 d-none d-sm-block">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item active"><a href="/personas">Personas</a></li>
+            <li class="breadcrumb-item active"><a href="/personas">Inscripciones</a></li>
+            <li class="breadcrumb-item"><a href="/personas/{{$id}}/edit">Editar</a></li>
         </ol>
     </div>
 </div>
@@ -21,7 +22,8 @@
 
 @section('content')
 
-@livewire('personas.index')
+@livewire('inscripciones.edit', ['id' => $id])
+
 <x-livewire-alert::scripts />
 @stop
 

@@ -17,16 +17,16 @@ class Inscripcion extends Model
 
     protected $guarded = ['ID_INSCRIPCION'];
 
-    public function socio() {
-        return $this->belongsTo('App\Models\sys\Socio', 'FK_APROBADO', 'ID_SOCIO');
-    }
-
-    public function persona() {
+    public function personaSolicitado() {
         return $this->belongsTo('App\Models\sys\Persona', 'FK_SOLICITADO', 'ID_PERSONA');
     }
 
+    public function personaAprobado() {
+        return $this->belongsTo('App\Models\sys\Persona', 'FK_APROBADO', 'ID_PERSONA');
+    }
+
     public function ingreso() {
-        return $this->belongsTo('App\Models\sys\Ingreso', 'FK_INGRESO', 'ID_INSCRIPCION');
+        return $this->belongsTo('App\Models\sys\Ingreso', 'FK_INGRESO', 'ID_INGRESO');
     }
 
     public function requisitos_inscripciones() {
