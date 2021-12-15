@@ -7,6 +7,7 @@ use App\Models\sys\Inscripcion;
 use App\Models\sys\Persona;
 use App\Models\sys\Requisito;
 use Illuminate\Database\Seeder;
+use PhpParser\Node\Stmt\Foreach_;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,9 +24,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\sys\Provincia::factory(20)->create();
         \App\Models\sys\Distrito::factory(20)->create();
         \App\Models\sys\Comunidad::factory(20)->create();
-        \App\Models\sys\Requisito::factory(20)->create();
+        \App\Models\sys\Requisito::factory(3)->create();
         \App\Models\sys\Ingreso::factory(20)->create();
-        \App\Models\sys\Inscripcion::factory(20)->create();
+        $inscripciones = \App\Models\sys\Inscripcion::factory(20)->create();
 
         $ADMIN = Persona::all()->first()->ID_PERSONA;
 
@@ -43,10 +44,18 @@ class DatabaseSeeder extends Seeder
             'FK_PERSONA' => $ADMIN 
         ]);
 
-        \App\Models\sys\RequisitoInscripcion::create([
-            'DE_URL' => 'url',
-            'FK_INSCRIPCION' => Inscripcion::all()->random()->ID_INSCRIPCION,
-            'FK_REQUISITO' => Requisito::all()->random()->ID_REQUISITO,
-        ]);
+        foreach ($inscripciones as $inscripcion) {
+            \App\Models\sys\RequisitoInscripcion::create([
+                'DE_URL' => 'url',
+                'FK_INSCRIPCION' => $inscripcion->ID_INSCRIPCION,
+                'FK_REQUISITO' => '1',
+            ]);
+
+            \App\Models\sys\RequisitoInscripcion::create([
+                'DE_URL' => 'url',
+                'FK_INSCRIPCION' => $inscripcion->ID_INSCRIPCION,
+                'FK_REQUISITO' => '2',
+            ]);
+        }
     }
 }

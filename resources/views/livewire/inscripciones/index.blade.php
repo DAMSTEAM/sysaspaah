@@ -36,34 +36,43 @@
                 <th>Ingreso</th>
                 <th>Solicitado</th>
                 <th>Aprobado</th>
-                <th></th>
+                <th>Requisitos</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach($inscripciones as $inscripcion)
             <tr class="text-center">
-                <td>{{ $inscripcion->ID_PERSONA }}</td>
-                <td>{{ $persona->NO_SOCIO }} {{ $persona->AP_PATERNO }} {{ $persona->AP_MATERNO }}</td>
-                <td>{{ $persona->CO_DNI }}</td>
-                <td>{{ $persona->NU_CELULAR }}</td>
+                <td>{{ $inscripcion->ID_INSCRIPCION }}</td>
                 <td>
-                    @if ($persona->TI_SEXO == '1')
-                    <i class="fas fa-mars text-info fa-2x"></i>
+                    @if ($inscripcion->ES_INSCRIPCION == '1')
+                    Aprobado
+                    @elseif($inscripcion->ES_INSCRIPCION == '2')
+                    Rechazado
                     @else
-                    <i class="fas fa-venus text-danger fa-2x"></i>
+                    En curso
                     @endif
                 </td>
-                <td>{{ $persona->FE_NACIMIENTO }}</td>
+                <td>{{ $inscripcion->ingreso->MO_TOTAL_PAGO }}</td>
+                <td>{{ $inscripcion->personaSolicitado->NO_SOCIO }}</td>
+                <td>{{ $inscripcion->personaAprobado->NO_SOCIO }}</td>
+                <td>
+                    <select class="form-control">
+                        <option value="0" selected>Requisitos...</option>
+                        @foreach ($inscripcion->requisitos_inscripciones as $requisito)
+                        <option value="0">{{$requisito->requisito->NO_REQUISITO}}</option>
+                        @endforeach
+                    </select>
+                </td>
                 <td class="text-center">
                     <div class="btn-group" role="group">
-                        <a href="{{route('personas.show', $persona->ID_PERSONA)}}" type="button"
+                        <a href="{{route('inscripciones.show', $inscripcion->ID_INSCRIPCION)}}" type="button"
                             class="btn btn-sm btn-info"><i class="align-middle" data-feather="eye"></i>
                             Ver</a>
-                        <a href="{{route('personas.edit', $persona->ID_PERSONA)}}" type="button"
+                        <a href="{{route('inscripciones.edit', $inscripcion->ID_INSCRIPCION)}}" type="button"
                             class="btn btn-sm btn-warning"><i class="align-middle" data-feather="eye"></i>
                             Editar</a>
-                        <button wire:click="delete({{ $persona->ID_PERSONA }})"
+                        <button wire:click="delete({{ $inscripcion->ID_INSCRIPCION }})"
                             class="btn btn-danger btn-sm">Eliminar</button>
                     </div>
                 </td>
