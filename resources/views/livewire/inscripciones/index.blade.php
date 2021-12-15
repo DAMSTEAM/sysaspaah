@@ -1,15 +1,15 @@
 <div>
-    <div class="mb-3 d-flex justify-content-between row">
-        <div class="col-8">
+    <div class="mb-3 d-flex justify-content-center row">
+        <div class="col-4">
             <x-jet-input placeholder="Buscar socio" type="text" wire:model="palabraBuscar" />
         </div>
-        <div class="col-4">
+        <div class="col-2">
             <div class="form-group">
                 <select class="form-control" wire:model="tipoBuscar">
-                    <option value="0">Seleccione tipo...</option>
-                    <option value="1">Nombres y apellidos</option>
-                    <option value="2">DNI</option>
-                    <option value="3" selected>Cod.</option>
+                    <option value="0" selected>Seleccione tipo...</option>
+                    <option value="1">Termindos</option>
+                    <option value="2">Rechazados</option>
+                    <option value="3">En curso</option>
                 </select>
             </div>
         </div>
@@ -32,10 +32,10 @@
         <thead>
             <tr class="text-center">
                 <th>Cod.</th>
-                <th>Estado</th>
-                <th>Ingreso</th>
                 <th>Solicitado</th>
                 <th>Aprobado</th>
+                <th>Estado</th>
+                <th>Ingreso</th>
                 <th>Requisitos</th>
                 <th>Acciones</th>
             </tr>
@@ -44,18 +44,18 @@
             @foreach($inscripciones as $inscripcion)
             <tr class="text-center">
                 <td>{{ $inscripcion->ID_INSCRIPCION }}</td>
+                <td>{{ $inscripcion->personaSolicitado->NO_SOCIO }}</td>
+                <td>{{ $inscripcion->personaAprobado->NO_SOCIO }}</td>
                 <td>
                     @if ($inscripcion->ES_INSCRIPCION == '1')
-                    Aprobado
+                    <i class="fas fa-check fa-2x text-success"></i>
                     @elseif($inscripcion->ES_INSCRIPCION == '2')
-                    Rechazado
+                    <i class="fas fa-times fa-2x text-danger"></i>
                     @else
-                    En curso
+                    <i class="far fa-clock fa-2x text-info"></i>
                     @endif
                 </td>
                 <td>{{ $inscripcion->ingreso->MO_TOTAL_PAGO }}</td>
-                <td>{{ $inscripcion->personaSolicitado->NO_SOCIO }}</td>
-                <td>{{ $inscripcion->personaAprobado->NO_SOCIO }}</td>
                 <td>
                     <select class="form-control">
                         <option value="0" selected>Requisitos...</option>

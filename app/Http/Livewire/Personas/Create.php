@@ -37,6 +37,7 @@ class Create extends Component
             'CO_DNI' => $this->CO_DNI,
             'NU_CELULAR' => $this->NU_CELULAR,
             'TI_SEXO' => $this->TI_SEXO,
+            'ES_PERSONA' => '1',
             'FE_NACIMIENTO' => $this->FE_NACIMIENTO,
             'ID_PERSONA' => $this->ID_PERSONA
         ]) ;

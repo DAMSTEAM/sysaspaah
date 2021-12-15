@@ -24,6 +24,7 @@ class PersonaFactory extends Factory
             'CO_DNI' => $this->faker->randomNumber($nbDigits = 8),
             'NU_CELULAR' => $this->faker->randomNumber($nbDigits = 9),
             'TI_SEXO' => $this->faker->randomElement(array ('1','2')),
+            'ES_PERSONA' => $this->faker->randomElement(array ('0','1')),
             'FE_NACIMIENTO' => $this->faker->date('Y-m-d', 'now')
         ];
     }

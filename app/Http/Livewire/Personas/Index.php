@@ -27,17 +27,21 @@ class Index extends Component
     {
         if ($this->tipoBuscar == '0') {
             $this->personas = Persona::where('NO_SOCIO', 'like', '%' . $this->palabraBuscar . '%')
+            ->where('ES_PERSONA', '=', 1)
             ->orderBy('NO_SOCIO', 'desc')->paginate(10); 
         } else if ($this->tipoBuscar == '1') {
             $this->personas = Persona::where('NO_SOCIO', 'like', '%' . $this->palabraBuscar . '%')
+            ->where('ES_PERSONA', '=', 1)
             ->orWhere('AP_PATERNO', 'like', '%' . $this->palabraBuscar . '%')
             ->orWhere('AP_MATERNO', 'like', '%' . $this->palabraBuscar . '%')
             ->orderBy('NO_SOCIO', 'desc')->paginate(10); 
         } else if($this->tipoBuscar == '2') {
             $this->personas = Persona::where('CO_DNI', 'like', '%' . $this->palabraBuscar . '%')
+            ->where('ES_PERSONA', '=', 1)
             ->orderBy('CO_DNI', 'desc')->paginate(10); 
         } else {
             $this->personas = Persona::where('ID_PERSONA', 'like', '%' . $this->palabraBuscar . '%')
+            ->where('ES_PERSONA', '=', 1)
             ->orderBy('ID_PERSONA', 'desc')->paginate(10); 
         }
 
@@ -68,7 +72,9 @@ class Index extends Component
     public function destroy() {
         if ($this->ID_PERSONA) {
             $persona = Persona::where('ID_PERSONA', $this->ID_PERSONA);
-            $persona->delete();
+            $persona->update([
+                'ES_PERSONA' => '0',
+            ]);
         }
 
         $this->alert('success','¡Se eliminó!', [

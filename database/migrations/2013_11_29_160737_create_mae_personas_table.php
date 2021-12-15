@@ -21,6 +21,7 @@ class CreateMaePersonasTable extends Migration
             $table->integer('CO_DNI');
             $table->integer('NU_CELULAR');
             $table->char('TI_SEXO', 1);
+            $table->char('ES_PERSONA', 1);
             $table->date('FE_NACIMIENTO');
             $table->timestamps();
         });
