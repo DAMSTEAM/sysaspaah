@@ -14,7 +14,8 @@ class Index extends Component
     use LivewireAlert;
 
     protected $listeners = [
-        'destroy'
+        'destroy',
+        'retirar'
     ];
 
     protected $paginationTheme = 'bootstrap';
@@ -53,35 +54,74 @@ class Index extends Component
     public function delete($id)
     {
         $this->ID_PERSONA = $id;
-        $this->alert('question', '¿Desea eliminar?', [
+
+        $this->alert('warning', '¡Eliminar persona!', [
             'position' => 'center',
             'timer'  => null,
             'toast' => false,
-            'showConfirmButton' => true,
             'onConfirmed' => 'destroy',
             'showCancelButton' => true,
             'onDismissed' => '',
             'cancelButtonColor' => '#d33',
-            'text' => 'Los datos se eliminarán por completo',
-            'confirmButtonColor' => '#3085d6'
+            'confirmButtonColor' => '#3085d6',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Enviar',
+            'title' => '¡Verificar  persona!',
+            'input' => 'text',
+            'inputLabel' => 'Ingrese el DNI de la persona',
+            'allowOutsideClick' => false,
+            'timer' => null
         ]);
     }
+    
 
-    public function destroy() {
+    public function destroy($data) {
+        $dni = $data['value'];
+        if ($this->ID_PERSONA) {
+            $persona = Persona::where('ID_PERSONA', $this->ID_PERSONA)->first();
+            if ($persona->CO_DNI == $dni) {
+                $this->alert('question', '¿Desea eliminar?', [
+                    'position' => 'center',
+                    'timer'  => null,
+                    'toast' => false,
+                    'showConfirmButton' => true,
+                    'onConfirmed' => 'retirar',
+                    'showCancelButton' => true,
+                    'onDismissed' => '',
+                    'cancelButtonColor' => '#d33',
+                    'text' => 'Ingrese el DNI de la persona para eliminar',
+                    'confirmButtonColor' => '#3085d6'
+                ]);
+            } else {
+                $this->alert('error', 'Ocurrió un error', [
+                    'position' => 'center',
+                    'timer'  => 3000,
+                    'toast' => false,
+                    'showConfirmButton' => true,
+                    'onConfirmed' => '',
+                    'text' => 'El DNI es incorrecto, vuelva a intentarlo',
+                    'confirmButtonColor' => '#3085d6'
+                ]);
+            }
+        }
+    }
+
+    public function retirar() {
         if ($this->ID_PERSONA) {
             $persona = Persona::where('ID_PERSONA', $this->ID_PERSONA);
             $persona->update([
                 'ES_PERSONA' => '0',
             ]);
-        }
 
-        $this->alert('success','¡Se eliminó!', [
-            'position' => 'center',
-            'timer' => 3000,
-            'toast' => false,
-            'text' => 'Se eliminó correctamente la persona',
-        ], '/personas');
+            $this->alert('success','¡Se eliminó!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'text' => 'Se eliminó correctamente la persona',
+            ], '/personas');
+        }
     }
+
 /* 
     public function saveRequisito() {
         $this->reqTBL = DB::select("call SP_INS_REQUISITOS('$this->palabraReq', @status)");

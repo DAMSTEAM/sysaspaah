@@ -24,7 +24,7 @@
         </div>
 
         <a class="btn btn-success" href="{{route('inscripciones.create')}}">
-            <i class="fas fa-plus mr-1"></i> Registrar persona
+            <i class="fas fa-plus mr-1"></i> Registrar inscripción
         </a>
     </div>
 
