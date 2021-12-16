@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\InscripcionesExport;
 use App\Models\sys\Inscripcion;
 use Illuminate\Http\Request;
 use App\Exports\PersonasExport;
@@ -88,13 +89,13 @@ class InscripcionesController extends Controller
     }
 
     public function excel() {
-        return Excel::download(new PersonasExport, 'personas.xlsx');
+        return Excel::download(new InscripcionesExport, 'inscripciones.xlsx');
     }
 
     public function pdf() {
-        $personas = Inscripcion::all();
-        $pdf = PDF::loadView('sys.inscripciones.exports.pdf', compact('personas'));
+        $inscripciones = Inscripcion::all();
+        $pdf = PDF::loadView('sys.inscripciones.exports.pdf', compact('inscripciones'));
         $pdf->setPaper('a4', 'landscape');
-        return $pdf->stream('personas.pdf');
+        return $pdf->stream('inscripciones.pdf');
     }
 }

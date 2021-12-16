@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Personas;
 
+use App\Models\sys\Inscripcion;
 use App\Models\sys\Persona;
 use Illuminate\Support\Facades\DB;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -55,25 +56,38 @@ class Index extends Component
     {
         $this->ID_PERSONA = $id;
 
-        $this->alert('warning', '¡Eliminar persona!', [
-            'position' => 'center',
-            'timer'  => null,
-            'toast' => false,
-            'onConfirmed' => 'destroy',
-            'showCancelButton' => true,
-            'onDismissed' => '',
-            'cancelButtonColor' => '#d33',
-            'confirmButtonColor' => '#3085d6',
-            'showConfirmButton' => true,
-            'confirmButtonText' => 'Enviar',
-            'title' => '¡Verificar  persona!',
-            'input' => 'text',
-            'inputLabel' => 'Ingrese el DNI de la persona',
-            'allowOutsideClick' => false,
-            'timer' => null
-        ]);
+        $personaCurso = Inscripcion::where('FK_SOLICITADO', '=', $id)->where('ES_INSCRIPCION', '=', '3')->first();
+
+        if (empty($personaCurso)) {
+            $this->alert('warning', '¡Eliminar persona!', [
+                'position' => 'center',
+                'timer'  => null,
+                'toast' => false,
+                'onConfirmed' => 'destroy',
+                'showCancelButton' => true,
+                'onDismissed' => '',
+                'cancelButtonColor' => '#d33',
+                'confirmButtonColor' => '#3085d6',
+                'showConfirmButton' => true,
+                'confirmButtonText' => 'Enviar',
+                'title' => '¡Verificar  persona!',
+                'input' => 'text',
+                'inputLabel' => 'Ingrese el DNI de la persona',
+                'allowOutsideClick' => false,
+                'timer' => null
+            ]);
+        } else {
+            $this->alert('error', '¡Ocurrió un error!', [
+                'position' => 'center',
+                'timer'  => 3000,
+                'toast' => false,
+                'showConfirmButton' => true,
+                'onConfirmed' => '',
+                'text' => 'La persona tiene una inscripción pendiente',
+                'confirmButtonColor' => '#3085d6'
+            ]);
+        }
     }
-    
 
     public function destroy($data) {
         $dni = $data['value'];
@@ -93,7 +107,7 @@ class Index extends Component
                     'confirmButtonColor' => '#3085d6'
                 ]);
             } else {
-                $this->alert('error', 'Ocurrió un error', [
+                $this->alert('error', '¡Ocurrió un error!', [
                     'position' => 'center',
                     'timer'  => 3000,
                     'toast' => false,

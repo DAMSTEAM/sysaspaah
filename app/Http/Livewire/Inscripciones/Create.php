@@ -39,7 +39,7 @@ class Create extends Component
     {
         $this->FK_PERSONA = Auth::user()->persona->ID_PERSONA;
         $this->requisitos = Requisito::all();
-        $this->personas = Persona::all();
+        $this->personas = Persona::where('ES_PERSONA', '<>', '0')->get();
     }
 
     public function render()
@@ -52,7 +52,7 @@ class Create extends Component
 
         $this->validate();
 
-        $personaIns = Inscripcion::where('FK_SOLICITADO', $this->FK_PERSONA);
+        $personaIns = Inscripcion::where('FK_SOLICITADO', $this->FK_SOLICITADO)->first();
 
         if (empty($personaIns)) {
             $this->ingreso = Ingreso::create([

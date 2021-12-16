@@ -70,36 +70,48 @@
 
 <body>
     <header>
-        <h1>Personas de ASPAAH</h1>
+        <h1>Inscripciones de ASPAAH</h1>
     </header>
 
     <main>
         <table class="resp">
             <thead>
                 <tr>
-                    <th scope="col">Cod.</th>
-                    <th scope="col">Nombres y apellidos</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Número</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Fecha de nacimiento</th>
+                    <th>Cod.</th>
+                    <th>Estado</th>
+                    <th>Cantidad de ingreso</th>
+                    <th>Persona solicitada</th>
+                    <th>Persona aprobada</th>
+                    <th>Fecha de creación</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($personas as $persona)
+                @foreach ($inscripciones as $inscripcion)
                 <tr>
-                    <td>{{ $persona->ID_PERSONA }}</td>
-                    <td>{{ $persona->NO_SOCIO }} {{ $persona->AP_PATERNO }} {{ $persona->AP_MATERNO }}</td>
-                    <td>{{ $persona->CO_DNI }}</td>
-                    <td>{{ $persona->NU_CELULAR }}</td>
+                    <td>{{ $inscripcion->ID_INSCRIPCION }}</td>
                     <td>
-                        @if ($persona->TI_SEXO == '1')
-                            Varón
+                        @if ($inscripcion->ES_INSCRIPCION == '1')
+                        Aprobado
+                        @elseif($inscripcion->ES_INSCRIPCION == '2')
+                        Rechazado
+                        @elseif($inscripcion->ES_INSCRIPCION == '3')
+                        En curso
                         @else
-                            Mujer
+                        Desactivado
                         @endif
                     </td>
-                    <td>{{ $persona->FE_NACIMIENTO }}</td>
+                    <td>{{ $inscripcion->ingreso->CA_PAGO }}</td>
+                    <td>{{ $inscripcion->personaSolicitado->NO_SOCIO }}</td>
+                    <td>
+                        @if (empty($inscripcion->personaAprobado->NO_SOCIO))
+                        Sin aprobación
+                        @else
+                        {{$inscripcion->personaAprobado->NO_SOCIO}}
+                        @endif
+                    </td>
+                    <td>
+                        {{$inscripcion->created_at}}
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

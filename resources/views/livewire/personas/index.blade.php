@@ -57,9 +57,9 @@
                 <td>{{ $persona->FE_NACIMIENTO }}</td>
                 <td class="text-center">
                     <div class="btn-group" role="group">
-                        <a href="{{route('personas.show', $persona->ID_PERSONA)}}" type="button"
+{{--                         <a href="{{route('personas.show', $persona->ID_PERSONA)}}" type="button"
                             class="btn btn-sm btn-info"><i class="align-middle" data-feather="eye"></i>
-                            Ver</a>
+                            Ver</a> --}}
                         <a href="{{route('personas.edit', $persona->ID_PERSONA)}}" type="button"
                             class="btn btn-sm btn-warning"><i class="align-middle" data-feather="eye"></i>
                             Editar</a>

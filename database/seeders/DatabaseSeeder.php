@@ -51,15 +51,21 @@ class DatabaseSeeder extends Seeder
 
         foreach ($inscripciones as $inscripcion) {
             \App\Models\sys\RequisitoInscripcion::create([
-                'DE_URL' => '1',
+                'DE_URL' => 'haha',
                 'FK_INSCRIPCION' => $inscripcion->ID_INSCRIPCION,
                 'FK_REQUISITO' => '1',
             ]);
 
             \App\Models\sys\RequisitoInscripcion::create([
-                'DE_URL' => '1',
+                'DE_URL' => 'hoh',
                 'FK_INSCRIPCION' => $inscripcion->ID_INSCRIPCION,
                 'FK_REQUISITO' => '2',
+            ]);
+
+            \App\Models\sys\RequisitoInscripcion::create([
+                'DE_URL' => 'hehe',
+                'FK_INSCRIPCION' => $inscripcion->ID_INSCRIPCION,
+                'FK_REQUISITO' => '3',
             ]);
         }
     }

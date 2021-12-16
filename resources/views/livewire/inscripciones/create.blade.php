@@ -57,13 +57,15 @@
                     </div>
                 </div>
             </div>
-            @foreach ($requisitos as $key => $requisito)
+            @foreach ($requisitos as $requisito)
             <div class="row">
                 <div class="col">
                     <div class="form-group">
                         <div class="form-check">
                             <label class="form-check-label @error('opcionesReq') text-danger @enderror">
-                                <input class="form-check-input" value="{{$requisito->ID_REQUISITO}}" wire:model="opcionesReq" type="checkbox"> {{$requisito->NO_REQUISITO}}
+                                <input class="form-check-input" value="{{$requisito->ID_REQUISITO}}"
+                                    wire:model="opcionesReq.{{$requisito->ID_REQUISITO}}" type="checkbox">
+                                {{$requisito->NO_REQUISITO}}
                             </label>
                             @error('opcionesReq')
                             <small class="form-text text-danger">{{$message}}</small>
