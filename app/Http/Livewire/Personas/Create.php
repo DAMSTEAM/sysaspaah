@@ -1,8 +1,13 @@
 <?php
 
 namespace App\Http\Livewire\Personas;
+
+use App\Models\sys\Comunidad;
+use App\Models\sys\Departamento;
+use App\Models\sys\Distrito;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\sys\Persona;
+use App\Models\sys\Provincia;
 use Livewire\Component;
 
 class Create extends Component

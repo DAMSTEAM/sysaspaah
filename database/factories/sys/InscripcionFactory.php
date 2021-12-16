@@ -20,10 +20,10 @@ class InscripcionFactory extends Factory
     public function definition()
     {
         return [
-            'ES_INSCRIPCION' => $this->faker->randomElement(array ('1','2','3')),
+            'ES_INSCRIPCION' => '3',
             'FK_INGRESO' => Ingreso::all()->random()->ID_INGRESO,
-            'FK_SOLICITADO' => $this->faker->unique()->numberBetween(1, Persona::count()),
-            'FK_APROBADO' => Persona::all()->random()->ID_PERSONA,
+            'FK_SOLICITADO' => $this->faker->unique()->numberBetween(2, Persona::count()),
+            'FK_APROBADO' => null,
         ];
     }
 }

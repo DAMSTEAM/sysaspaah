@@ -3,11 +3,11 @@
 @section('title', 'Hogar')
 
 @section('content_header')
-    <h1>a</h1>
+    <h1>Dashboard</h1>
 @stop
 
 @section('content')
-    sasa
+    @livewire('app')
 @stop
 
 @section('css')

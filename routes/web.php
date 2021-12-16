@@ -29,9 +29,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('personas/excel', [PersonasController::class, 'excel'])->name('personas.excel');
     Route::get('personas/pdf', [PersonasController::class, 'pdf'])->name('personas.pdf');
     Route::resource('personas', PersonasController::class);
-
-    Route::get('socios/excel', [SociosController::class, 'excel'])->name('socios.excel');
+    
     Route::get('socios/pdf', [SociosController::class, 'pdf'])->name('socios.pdf');
+    Route::get('socios/excel', [SociosController::class, 'excel'])->name('socios.excel');
+    Route::get('socios/pdfCarnets', [SociosController::class, 'pdfCarnets'])->name('socios.pdfCarnets');
+    Route::get('socios/pdfCarnet', [SociosController::class, 'pdfCarnet'])->name('socios.pdfCarnet');
+    Route::get('socios/create/inscripcion/{id}', [SociosController::class, 'createAll'])->name('socios.inscripcion.create');
     Route::resource('socios', SociosController::class);
 
     Route::get('inscripciones/excel', [InscripcionesController::class, 'excel'])->name('inscripciones.excel');

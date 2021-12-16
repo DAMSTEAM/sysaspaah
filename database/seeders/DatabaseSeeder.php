@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\sys\Comunidad;
+use App\Models\sys\Ingreso;
 use App\Models\sys\Inscripcion;
 use App\Models\sys\Persona;
 use App\Models\sys\Requisito;
@@ -25,13 +26,13 @@ class DatabaseSeeder extends Seeder
         $faker = Faker::create();
 
         \App\Models\sys\Persona::factory(21)->create();
-        \App\Models\sys\Departamento::factory(20)->create();
-        \App\Models\sys\Provincia::factory(20)->create();
-        \App\Models\sys\Distrito::factory(20)->create();
-        \App\Models\sys\Comunidad::factory(20)->create();
+        \App\Models\sys\Departamento::factory(50)->create();
+        \App\Models\sys\Provincia::factory(150)->create();
+        \App\Models\sys\Distrito::factory(500)->create();
+        \App\Models\sys\Comunidad::factory(1000)->create();
         \App\Models\sys\Requisito::factory(3)->create();
         \App\Models\sys\Ingreso::factory(20)->create();
-        $inscripciones = \App\Models\sys\Inscripcion::factory(20)->create();
+
 
         $ADMIN = Persona::all()->first()->ID_PERSONA;
 
@@ -49,6 +50,14 @@ class DatabaseSeeder extends Seeder
             'FK_PERSONA' => $ADMIN 
         ]);
 
+        \App\Models\sys\Inscripcion::create([
+            'ES_INSCRIPCION' => '1',
+            'FK_INGRESO' => Ingreso::all()->random()->ID_INGRESO,
+            'FK_SOLICITADO' => $ADMIN,
+            'FK_APROBADO' => Persona::all()->random()->ID_PERSONA,
+        ]);
+
+        $inscripciones = \App\Models\sys\Inscripcion::factory(20)->create();
         foreach ($inscripciones as $inscripcion) {
             \App\Models\sys\RequisitoInscripcion::create([
                 'DE_URL' => 'haha',

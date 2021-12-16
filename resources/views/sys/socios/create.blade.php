@@ -22,7 +22,7 @@
 
 @section('content')
 
-@livewire('personas.create')
+@livewire('socios.create')
 
 <x-livewire-alert::scripts />
 @stop

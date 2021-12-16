@@ -97,4 +97,23 @@ class SociosController extends Controller
         $pdf->setPaper('a4', 'landscape');
         return $pdf->stream('personas.pdf');
     }
+
+    public function pdfCarnets() {
+        $personas = Socio::all();
+        $pdf = PDF::loadView('sys.personas.exports.pdfCarnets', compact('personas'));
+        /* $pdf->setPaper('a4', 'landscape'); */
+        return $pdf->stream('personasCarnets.pdf');
+    }
+
+    public function pdfCarnet($id) {
+        $persona = Socio::find($id);
+        $pdf = PDF::loadView('sys.personas.exports.pdfCarnet', compact('persona'));
+        /* $pdf->setPaper('a4', 'landscape'); */
+        return $pdf->stream('personasCarnet.pdf');
+    }
+
+    public function createAll($id)
+    {
+        return view('sys.socios.createAll', compact('id'));
+    }
 }

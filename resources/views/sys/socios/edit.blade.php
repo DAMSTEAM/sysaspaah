@@ -22,7 +22,7 @@
 
 @section('content')
 
-@livewire('personas.edit', ['id' => $id])
+@livewire('socios.edit', ['id' => $id])
 
 <x-livewire-alert::scripts />
 @stop
