@@ -29,7 +29,8 @@ class Inscripcion extends Model
         return $this->belongsTo('App\Models\sys\Ingreso', 'FK_INGRESO', 'ID_INGRESO');
     }
 
-    public function requisitos_inscripciones() {
-        return $this->hasMany('App\Models\sys\RequisitoInscripcion', 'FK_INSCRIPCION', 'ID_INSCRIPCION');
+    public function requisitos() {
+        return $this->belongsToMany(Requisito::class, 'tbl_requisitos_inscripciones', 'FK_INSCRIPCION', 'FK_REQUISITO')
+        ->withTimestamps();
     }
 }

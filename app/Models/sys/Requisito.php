@@ -17,7 +17,8 @@ class Requisito extends Model
 
     protected $guarded = ['ID_REQUISITO'];
 
-    public function requisitos_inscripciones() {
-        return $this->hasMany('App\Models\sys\RequisitoInscripcion', 'FK_REQUISITO', 'ID_REQUISITO');
+    public function inscripciones() {
+        return $this->belongsToMany('App\Models\sys\Inscripcion', 'tbl_requisitos_inscripciones', 'FK_REQUISITO', 'FK_INSCRIPCION')
+        ->withTimestamps();
     }
 }

@@ -4,8 +4,9 @@ namespace App\Models\sys;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class RequisitoInscripcion extends Model
+class RequisitoInscripcion extends Pivot
 {
     use HasFactory;
 
@@ -16,12 +17,4 @@ class RequisitoInscripcion extends Model
     public $incrementing = true;
 
     protected $guarded = ['ID_REQUISITO_INSCRIPCION'];
-
-    public function requisito() {
-        return $this->belongsTo('App\Models\sys\Requisito', 'FK_REQUISITO', 'ID_REQUISITO');
-    }
-
-    public function inscripcion() {
-        return $this->belongsTo('App\Models\sys\Inscripcion', 'FK_INSCRIPCION', 'ID_INSCRIPCION');
-    }
 }

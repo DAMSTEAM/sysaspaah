@@ -154,6 +154,14 @@ return [
         'NU_CELULAR' => 'celular',
         'TI_SEXO' => 'sexo',
         'FE_NACIMIENTO' => 'fecha de nacimiento',
+        'TI_PAGO' => 'tipo de pago',
+        'TI_INGRESO' => 'tipo de ingreso',
+        'NO_INGRESO' => 'nombre del ingreso',
+        'CA_PAGO' => 'cantidad de pago',
+        'CA_DESCUENTO' => 'cantidad de descuento',
+        'MO_TOTAL' => 'monto total',
+        'FK_SOLICITADO' => 'solicitud de persona',
+        'opcionesReq' => 'requisitos',
     ],
 
 ];

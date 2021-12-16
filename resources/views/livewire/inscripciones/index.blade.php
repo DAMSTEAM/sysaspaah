@@ -45,7 +45,13 @@
             <tr class="text-center">
                 <td>{{ $inscripcion->ID_INSCRIPCION }}</td>
                 <td>{{ $inscripcion->personaSolicitado->NO_SOCIO }}</td>
-                <td>{{ $inscripcion->personaAprobado->NO_SOCIO }}</td>
+                <td>
+                    @if (empty($inscripcion->personaAprobado->NO_SOCIO))
+                    Sin aprobación
+                    @else
+                    {{$inscripcion->personaAprobado->NO_SOCIO}}
+                    @endif
+                </td>
                 <td>
                     @if ($inscripcion->ES_INSCRIPCION == '1')
                     <i class="fas fa-check fa-2x text-success"></i>
@@ -59,8 +65,8 @@
                 <td>
                     <select class="form-control">
                         <option value="0" selected>Requisitos...</option>
-                        @foreach ($inscripcion->requisitos_inscripciones as $requisito)
-                        <option value="0">{{$requisito->requisito->NO_REQUISITO}}</option>
+                        @foreach ($inscripcion->requisitos as $requisito)
+                        <option value="0">{{$requisito->NO_REQUISITO}}</option>
                         @endforeach
                     </select>
                 </td>
