@@ -1,7 +1,7 @@
 <div>
     <div class="mb-3 d-flex justify-content-center row">
         <div class="col-4">
-            <x-jet-input placeholder="Buscar socio" type="text" wire:model="palabraBuscar" />
+            <x-jet-input placeholder="Buscar inscripcion (id)" type="text" wire:model="palabraBuscar" />
         </div>
         <div class="col-2">
             <div class="form-group">

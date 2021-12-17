@@ -131,7 +131,7 @@ class Edit extends Component
             'timer' => 3000,
             'toast' => false,
             'text' => 'Se actualizó correctamente la inscripción',
-        ], '/personas');
+        ], '/inscripciones');
     }
 
     public function updated($props) {

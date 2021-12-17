@@ -74,7 +74,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-secondary btn-block" href="{{route('socios.index')}}">
+            <a class="btn btn-secondary btn-block" href="{{route('inscripciones.index')}}">
                 Cancelar
             </a>
             <button class="btn btn-success btn-block" wire:click="create" type="button" wire:loading.attr="disabled"

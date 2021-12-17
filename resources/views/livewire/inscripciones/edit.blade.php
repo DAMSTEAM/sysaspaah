@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Registrar una persona</h3>
+            <h3 class="card-title">Editar una inscripción</h3>
         </div>
         <div class="card-body">
             <div class="row">

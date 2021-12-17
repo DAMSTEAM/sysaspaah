@@ -21,7 +21,7 @@ class IngresoFactory extends Factory
         $resultado = 0;
         $pago = $this->faker->randomFloat(2, 0, 50);
         $descuento = $this->faker->randomDigit;
-        $resultado = $pago + $descuento;
+        $resultado = $pago - $descuento;
         return [
             'TI_PAGO' => '2',
             'TI_INGRESO' => '1',

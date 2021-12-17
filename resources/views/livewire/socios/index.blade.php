@@ -7,8 +7,9 @@
             <div class="form-group">
                 <select class="form-control" wire:model="tipoBuscar">
                     <option value="0">Seleccione tipo...</option>
-                    <option value="1" selected>Socio</option>
+                    <option value="1" selected>Socio activos</option>
                     <option value="2">Comunidad</option>
+                    <option value="3">Socio inactivos</option>
                 </select>
             </div>
         </div>
