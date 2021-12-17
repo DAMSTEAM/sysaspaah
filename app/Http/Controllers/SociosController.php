@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exports\PersonasExport;
+use App\Exports\SociosExport;
 use App\Http\Controllers\Controller;
 use App\Models\sys\Socio;
 use Maatwebsite\Excel\Facades\Excel;
@@ -88,19 +89,19 @@ class SociosController extends Controller
     }
 
     public function excel() {
-        return Excel::download(new PersonasExport, 'personas.xlsx');
+        return Excel::download(new SociosExport, 'socios.xlsx');
     }
 
     public function pdf() {
-        $personas = Socio::all();
-        $pdf = PDF::loadView('sys.socios.exports.pdf', compact('personas'));
+        $socios = Socio::all();
+        $pdf = PDF::loadView('sys.socios.exports.pdf', compact('socios'));
         $pdf->setPaper('a4', 'landscape');
-        return $pdf->stream('personas.pdf');
+        return $pdf->stream('socios.pdf');
     }
 
     public function pdfCarnets() {
-        $personas = Socio::all();
-        $pdf = PDF::loadView('sys.socios.exports.pdfCarnets', compact('personas'));
+        $socios = Socio::all();
+        $pdf = PDF::loadView('sys.socios.exports.pdfCarnets', compact('socios'));
         /* $pdf->setPaper('a4', 'landscape'); */
         return $pdf->stream('personasCarnets.pdf');
     }

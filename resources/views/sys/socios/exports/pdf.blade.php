@@ -70,36 +70,44 @@
 
 <body>
     <header>
-        <h1>Personas de ASPAAH</h1>
+        <h1>Socios de ASPAAH</h1>
     </header>
 
     <main>
         <table class="resp">
             <thead>
                 <tr>
-                    <th scope="col">Cod.</th>
-                    <th scope="col">Nombres y apellidos</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Número</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Fecha de nacimiento</th>
+                    <th>Cod.</th>
+                    <th>Nombres y apellidos</th>
+                    <th>DNI</th>
+                    <th>Número</th>
+                    <th>Sexo</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Comunidad</th>
+                    <th>Distrito</th>
+                    <th>Provincia</th>
+                    <th>Departamento</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($personas as $persona)
+                @foreach ($socios as $socio)
                 <tr>
-                    <td>{{ $persona->ID_PERSONA }}</td>
-                    <td>{{ $persona->NO_SOCIO }} {{ $persona->AP_PATERNO }} {{ $persona->AP_MATERNO }}</td>
-                    <td>{{ $persona->CO_DNI }}</td>
-                    <td>{{ $persona->NU_CELULAR }}</td>
+                    <td>{{ $socio->ID_SOCIO }}</td>
+                    <td>{{ $socio->persona->NO_SOCIO }} {{ $socio->persona->AP_PATERNO }} {{ $socio->persona->AP_MATERNO }}</td>
+                    <td>{{ $socio->persona->CO_DNI }}</td>
+                    <td>{{ $socio->persona->NU_CELULAR }}</td>
                     <td>
-                        @if ($persona->TI_SEXO == '1')
-                            Varón
+                        @if ($socio->persona->TI_SEXO == '1')
+                        Varón
                         @else
-                            Mujer
+                        Mujer
                         @endif
                     </td>
-                    <td>{{ $persona->FE_NACIMIENTO }}</td>
+                    <td>{{ $socio->persona->FE_NACIMIENTO }}</td>
+                    <td>{{ $socio->comunidad->NO_COMUNIDAD }}</td>
+                    <td>{{ $socio->comunidad->distrito->NO_DISTRITO }}</td>
+                    <td>{{ $socio->comunidad->distrito->provincia->NO_PROVINCIA }}</td>
+                    <td>{{ $socio->comunidad->distrito->provincia->departamento->NO_DEPARTAMENTO }}</td>
                 </tr>
                 @endforeach
             </tbody>
