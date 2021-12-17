@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Listar personas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         @page {
             margin: 0cm 0cm;
             font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
         }
 
         body {
+            font-family: Arial, Helvetica, sans-serif;
             margin: 3cm 2cm 2cm;
         }
 
@@ -41,28 +42,42 @@
             line-height: 35px;
         }
 
-        table {
-            width: 100%;
-            background: white;
-            margin-bottom: 1.25em;
-            border: solid 1px #dddddd;
-            border-collapse: collapse;
-            border-spacing: 0;
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 0 10px;
         }
 
-        table tr th,
-        table tr td {
-            padding: 0.5625em 0.625em;
-            font-size: 0.875em;
-            color: #222222;
-            border: 1px solid #dddddd;
+        /* Remove extra left and right margins, due to padding */
+        .row {
+            margin: 0 -5px;
+            margin-top: 30px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+
+        }
+
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 50px;
             text-align: center;
-        }
-
-        table tr.even,
-        table tr.alt,
-        table tr:nth-of-type(even) {
-            background: #f9f9f9;
+            background-color: #f1f1f1;
         }
 
     </style>
@@ -74,40 +89,30 @@
     </header>
 
     <main>
-        <table class="resp">
-            <thead>
-                <tr>
-                    <th scope="col">Cod.</th>
-                    <th scope="col">Nombres y apellidos</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Número</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Fecha de nacimiento</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($personas as $persona)
-                <tr>
-                    <td>{{ $persona->ID_PERSONA }}</td>
-                    <td>{{ $persona->NO_SOCIO }} {{ $persona->AP_PATERNO }} {{ $persona->AP_MATERNO }}</td>
-                    <td>{{ $persona->CO_DNI }}</td>
-                    <td>{{ $persona->NU_CELULAR }}</td>
-                    <td>
-                        @if ($persona->TI_SEXO == '1')
-                            Varón
-                        @else
-                            Mujer
-                        @endif
-                    </td>
-                    <td>{{ $persona->FE_NACIMIENTO }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <h3>asdadawdadsdad</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum molestias quidem quisquam distinctio
+                        quae natus ipsum nobis sapiente eum quaerat.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <h3>asdadawdadsdad</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum molestias quidem quisquam distinctio
+                        quae natus ipsum nobis sapiente eum quaerat.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
+                </div>
+            </div>
     </main>
-    <footer>
-        <h1>TEAM DAMS</h1>
-    </footer>
 </body>
 
 </html>

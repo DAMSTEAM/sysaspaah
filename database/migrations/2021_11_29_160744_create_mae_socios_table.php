@@ -16,7 +16,6 @@ class CreateMaeSociosTable extends Migration
         Schema::create('mae_socios', function (Blueprint $table) {
             $table->id('ID_SOCIO');
             $table->char('ES_SOCIO', 1);
-            $table->char('TI_SOCIO', 1);
             $table->unsignedBigInteger('FK_COMUNIDAD');
             $table->unsignedBigInteger('FK_PERSONA')->unique();
             $table->timestamps();

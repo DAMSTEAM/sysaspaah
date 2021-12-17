@@ -45,7 +45,6 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\sys\Socio::create([
             'ES_SOCIO' => '1',
-            'TI_SOCIO' => '0',
             'FK_COMUNIDAD' => Comunidad::all()->random()->ID_COMUNIDAD,
             'FK_PERSONA' => $ADMIN 
         ]);

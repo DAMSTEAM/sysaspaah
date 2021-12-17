@@ -27,18 +27,21 @@ class Index extends Component
             $this->socios = Socio::join("TBL_COMUNIDADES", "MAE_SOCIOS.FK_COMUNIDAD", "=", "TBL_COMUNIDADES.ID_COMUNIDAD")
             ->join("MAE_PERSONAS", "MAE_SOCIOS.FK_PERSONA", "=", "MAE_PERSONAS.ID_PERSONA")
             ->where("MAE_PERSONAS.NO_SOCIO", "like", '%'.$this->palabraBuscar.'%')
+            ->where("MAE_SOCIOS.ES_SOCIO", "=", '1')
             ->select("MAE_SOCIOS.*")
             ->orderBy('TBL_COMUNIDADES.NO_COMUNIDAD', 'desc')->paginate(10);
         } else if($this->tipoBuscar == '2') {
             $this->socios = Socio::join("TBL_COMUNIDADES", "MAE_SOCIOS.FK_COMUNIDAD", "=", "TBL_COMUNIDADES.ID_COMUNIDAD")
             ->join("MAE_PERSONAS", "MAE_SOCIOS.FK_PERSONA", "=", "MAE_PERSONAS.ID_PERSONA")
             ->where("TBL_COMUNIDADES.NO_COMUNIDAD", "like", '%'.$this->palabraBuscar.'%')
+            ->where("MAE_SOCIOS.ES_SOCIO", "=", '1')
             ->select("MAE_SOCIOS.*")
             ->orderBy('TBL_COMUNIDADES.NO_COMUNIDAD', 'desc')->paginate(10);
         } else {
             $this->socios = Socio::join("TBL_COMUNIDADES", "MAE_SOCIOS.FK_COMUNIDAD", "=", "TBL_COMUNIDADES.ID_COMUNIDAD")
             ->join("MAE_PERSONAS", "MAE_SOCIOS.FK_PERSONA", "=", "MAE_PERSONAS.ID_PERSONA")
             ->where("MAE_PERSONAS.NO_SOCIO", "like", '%'.$this->palabraBuscar.'%')
+            ->where("MAE_SOCIOS.ES_SOCIO", "=", '1')
             ->select("MAE_SOCIOS.*")
             ->orderBy('TBL_COMUNIDADES.NO_COMUNIDAD', 'desc')->paginate(10);
         }

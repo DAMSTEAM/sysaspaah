@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Inscripciones;
 
 use App\Models\sys\Inscripcion;
+use App\Models\sys\Persona;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -14,12 +15,14 @@ class Index extends Component
 
     protected $listeners = [
         'destroy',
-        'retirar'
+        'retirar', 
+        'delete',
+        'cambiar'
     ];
 
     protected $paginationTheme = 'bootstrap';
 
-    public $palabraBuscar, $tipoBuscar = 0, $inscripciones;
+    public $palabraBuscar, $tipoBuscar = 0, $inscripciones, $socio;
 
     public $ES_INSCRIPCION, $FK_INGRESO, $FK_SOLICITADO, $FK_APROBADO;
 
@@ -97,7 +100,7 @@ class Index extends Component
                     'timer'  => null,
                     'toast' => false,
                     'showConfirmButton' => true,
-                    'onConfirmed' => 'retirar',
+                    'onConfirmed' => 'cambiar',
                     'showCancelButton' => true,
                     'onDismissed' => '',
                     'cancelButtonColor' => '#d33',
@@ -118,9 +121,44 @@ class Index extends Component
         }
     }
 
+    public function rechazar($id) {
+        
+        $this->ID_INSCRIPCION = $id;
+        
+        $this->alert('question', '¿Desea rechazar?', [
+            'position' => 'center',
+            'timer'  => null,
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => 'retirar',
+            'showCancelButton' => true,
+            'onDismissed' => '',
+            'cancelButtonColor' => '#d33',
+            'text' => 'Se anulará la inscripción creada',
+            'confirmButtonColor' => '#3085d6'
+        ]);
+    }
+
     public function retirar() {
         if ($this->ID_INSCRIPCION) {
             $inscripcion = Inscripcion::where('ID_INSCRIPCION', $this->ID_INSCRIPCION);
+            $inscripcion->update([
+                'ES_INSCRIPCION' => '2',
+            ]);
+
+            $this->alert('success','¡Se rechazó!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'text' => 'Se rechazó la inscripción',
+            ], '/personas');
+        }
+    }
+
+    public function cambiar() {
+        if ($this->ID_INSCRIPCION) {
+            $inscripcion = Inscripcion::where('ID_INSCRIPCION', $this->ID_INSCRIPCION)->first();
+
             $inscripcion->update([
                 'ES_INSCRIPCION' => '0',
             ]);
@@ -129,7 +167,7 @@ class Index extends Component
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
-                'text' => 'Se eliminó correctamente la persona',
+                'text' => 'Se eliminó correctamente la inscripción',
             ], '/personas');
         }
     }

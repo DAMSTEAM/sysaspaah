@@ -12,9 +12,12 @@ use App\Models\sys\Socio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Create extends Component
 {
+    use LivewireAlert;
+
     public $departamentos;
     public $provincias;
     public $distritos;
@@ -90,7 +93,7 @@ class Create extends Component
             'FK_PERSONA' => $this->persona->ID_PERSONA
         ]);
 
-        $this->inscripcion::update([
+        $this->inscripcion->update([
             'ES_INSCRIPCION' => '1',
             'FK_APROBADO' => $this->idUser
         ]);
@@ -100,7 +103,7 @@ class Create extends Component
             'timer' => 3000,
             'toast' => false,
             'text' => 'Se registró correctamente a la persona',
-        ], '/personas');
+        ], '/socios');
     }
 
     public function updated($props) {

@@ -18,7 +18,7 @@ class Persona extends Model
     protected $guarded = ['ID_PERSONA'];
 
     public function socio() {
-        return $this->hasOne('App\Models\sys\Socio', 'FK_SOCIO', 'ID_SOCIO');
+        return $this->hasOne('App\Models\sys\Socio', 'FK_PERSONA', 'ID_SOCIO');
     }
 
     public function user() {
@@ -28,5 +28,9 @@ class Persona extends Model
     public function usuario() {
         return $this->hasOne('App\Models\sys\Usuario', 'FK_PERSONA', 'ID_USUARIO')
         ->withPivot('ES_URL');
+    }
+
+    public function inscripcion() {
+        return $this->hasOne('App\Models\sys\Inscripcion', 'FK_SOLICITADO', 'ID_INSCRIPCION');
     }
 }

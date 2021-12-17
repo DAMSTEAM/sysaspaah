@@ -77,16 +77,16 @@
                         class="btn btn-sm btn-info"><i class="align-middle" data-feather="eye"></i>
                         Ver</a> --}}
                         <a href="{{route('inscripciones.edit', $inscripcion->ID_INSCRIPCION)}}" type="button"
-                            class="btn btn-sm btn-warning"><i class="align-middle" data-feather="eye"></i>
+                            class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>
                             Editar</a>
                         <button wire:click="delete({{ $inscripcion->ID_INSCRIPCION }})"
-                            class="btn btn-danger btn-sm">Eliminar</button>
+                            class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
                         @if ($inscripcion->ES_INSCRIPCION == '3')
                         <a href="{{route('socios.inscripcion.create', $inscripcion->ID_INSCRIPCION)}}" type="button"
-                            class="btn btn-sm btn-info"><i class="align-middle" data-feather="eye"></i>
+                            class="btn btn-sm btn-info"><i class="fas fa-check"></i>
                             Aprobar</a>
-                        <a href="{{route('inscripciones.edit', $inscripcion->ID_INSCRIPCION)}}" type="button"
-                            class="btn btn-sm btn-primary"><i class="align-middle" data-feather="eye"></i>
+                        <a wire:click="rechazar({{ $inscripcion->ID_INSCRIPCION }})" type="button"
+                            class="btn btn-sm btn-primary"><i class="fas fa-exclamation"></i>
                             Rechazar</a>
                         @endif
                     </div>
