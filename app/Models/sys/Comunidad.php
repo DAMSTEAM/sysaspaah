@@ -18,7 +18,7 @@ class Comunidad extends Model
     protected $guarded = ['ID_COMUNIDAD'];
 
     public function distrito() {
-        return $this->belongsTo('App\Models\sys\Distrito', 'FK_DISTRITO', 'ID_COMUNIDAD');
+        return $this->belongsTo('App\Models\sys\Distrito', 'FK_DISTRITO', 'ID_DISTRITO');
     }
 
     public function socios() {

@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-<h1>Gestión de personas</h1>
+<h1>persona </h1>
 
 @stop
 

@@ -58,9 +58,6 @@
                         <a href="{{route('socios.show', $socio->ID_SOCIO)}}" type="button"
                             class="btn btn-sm btn-info"><i class="align-middle" data-feather="eye"></i>
                             Ver</a>
-                        <a href="{{route('socios.edit', $socio->ID_SOCIO)}}" type="button"
-                            class="btn btn-sm btn-warning"><i class="align-middle" data-feather="eye"></i>
-                            Editar</a>
                         <button wire:click="delete({{ $socio->ID_SOCIO }})"
                             class="btn btn-danger btn-sm">Retirar</button>
                     </div>

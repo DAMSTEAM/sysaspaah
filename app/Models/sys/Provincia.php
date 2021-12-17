@@ -18,7 +18,7 @@ class Provincia extends Model
     protected $guarded = ['ID_PROVINCIA'];
 
     public function departamento() {
-        return $this->belongsTo('App\Models\sys\Departamento');
+        return $this->belongsTo('App\Models\sys\Departamento', 'FK_DEPARTAMENTO', 'ID_DEPARTAMENTO');
     }
 
     public function distritos() {

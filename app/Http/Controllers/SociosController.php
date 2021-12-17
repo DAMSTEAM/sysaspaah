@@ -106,10 +106,10 @@ class SociosController extends Controller
     }
 
     public function pdfCarnet($id) {
-        $persona = Socio::find($id);
-        $pdf = PDF::loadView('sys.socios.exports.pdfCarnet', compact('persona'));
+        $socio = Socio::find($id);
+        $pdf = PDF::loadView('sys.socios.exports.pdfCarnet', compact('socio'));
         /* $pdf->setPaper('a4', 'landscape'); */
-        return $pdf->stream('personasCarnet.pdf');
+        return $pdf->stream('socioCarnet.pdf');
     }
 
     public function createAll($id)

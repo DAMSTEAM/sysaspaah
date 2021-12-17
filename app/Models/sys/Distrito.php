@@ -18,7 +18,7 @@ class Distrito extends Model
     protected $guarded = ['ID_DISTRITO'];
 
     public function provincia() {
-        return $this->belongsTo('App\Models\sys\Provincia', 'FK_DISTRITO', 'ID_DISTRITO');
+        return $this->belongsTo('App\Models\sys\Provincia', 'FK_PROVINCIA', 'ID_PROVINCIA');
     }
 
     public function comunidades() {

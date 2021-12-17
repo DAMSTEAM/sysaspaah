@@ -31,6 +31,6 @@ class Persona extends Model
     }
 
     public function inscripcion() {
-        return $this->hasOne('App\Models\sys\Inscripcion', 'FK_SOLICITADO', 'ID_INSCRIPCION');
+        return $this->hasOne('App\Models\sys\Inscripcion', 'FK_SOLICITADO', 'ID_PERSONA');
     }
 }

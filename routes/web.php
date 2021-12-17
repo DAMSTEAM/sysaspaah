@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('socios/pdf', [SociosController::class, 'pdf'])->name('socios.pdf');
     Route::get('socios/excel', [SociosController::class, 'excel'])->name('socios.excel');
     Route::get('socios/pdfCarnets', [SociosController::class, 'pdfCarnets'])->name('socios.pdfCarnets');
-    Route::get('socios/pdfCarnet', [SociosController::class, 'pdfCarnet'])->name('socios.pdfCarnet');
+    Route::get('socios/pdfCarnet/{id}', [SociosController::class, 'pdfCarnet'])->name('socios.pdfCarnet');
     Route::get('socios/create/inscripcion/{id}', [SociosController::class, 'createAll'])->name('socios.inscripcion.create');
     Route::resource('socios', SociosController::class);
 

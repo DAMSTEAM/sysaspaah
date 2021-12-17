@@ -1,118 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <title>CSS Template</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
             box-sizing: border-box;
         }
 
-        @page {
-            margin: 0cm 0cm;
-            font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
-        }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
-            margin: 3cm 2cm 2cm;
         }
 
-        header {
-            position: fixed;
-            top: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
-            background-color: #2a0927;
-            color: white;
-            text-align: center;
-            line-height: 30px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
-            background-color: #2a0927;
-            color: white;
-            text-align: center;
-            line-height: 35px;
-        }
-
-        /* Float four columns side by side */
-        .column {
-            float: left;
-            width: 25%;
-            padding: 0 10px;
-        }
-
-        /* Remove extra left and right margins, due to padding */
-        .row {
-            margin: 0 -5px;
-            margin-top: 30px;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-
-        }
-
-        /* Responsive columns */
-        @media screen and (max-width: 600px) {
-            .column {
-                width: 100%;
-                display: block;
-                margin-bottom: 20px;
-            }
-        }
-
-        /* Style the counter cards */
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            padding: 50px;
-            text-align: center;
+        /* Style the header */
+        .header {
             background-color: #f1f1f1;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+        }
+
+        /* Container for flexboxes */
+        .row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Create three equal columns that sits next to each other */
+        .column {
+            padding: 10px;
+            height: 360px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        /* Style the footer */
+        .footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .row {
+                flex-direction: column;
+            }
         }
 
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Personas de ASPAAH</h1>
-    </header>
+    <div class="header">
+        <h2>foto</h2>
+    </div>
 
-    <main>
-        <div class="row">
-            <div class="column">
-                <div class="card">
-                    <h3>asdadawdadsdad</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum molestias quidem quisquam distinctio
-                        quae natus ipsum nobis sapiente eum quaerat.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <h3>asdadawdadsdad</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum molestias quidem quisquam distinctio
-                        quae natus ipsum nobis sapiente eum quaerat.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, mollitia?</p>
-                </div>
-            </div>
-    </main>
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <table style="border: hidden">
+                <tbody style="border: hidden">
+                    <tr style="border: hidden">
+                        <td style="border: hidden">DATOS PERSONALES:</td>
+                        <td style="border: hidden"></td>
+                    </tr>
+                    <tr><td><br></td></tr>
+                    <tr style="border: hidden">
+                        <td style="border: hidden">Nombres y apellidos:</td>
+                        <td style="border: hidden">2a</td>
+                    </tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">DNI:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">Número de celular:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">Género:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">Fecha de nacimiento:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                    <tr><td><br></td></tr>
+                    <tr style="border: hidden">
+                        <td style="border: hidden">DATOS PERSONALES:</td>
+                        <td style="border: hidden"></td>
+                    </tr>
+                    <tr><td><br></td></tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">Comunidad de:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">Distrito de:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">Provincia de:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                    <tr style="border: hidden;"></td>
+                        <td style="border: hidden;">Departamento de:</td>
+                        <td style="border: hidden">sdad</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        Firma del socio
+    </div>
+    <div class="footer">
+        <hr width="300px">
+    </div>
+    <div class="footer">
+        Firma del Presidente
+    </div>
+    <div class="footer">
+        <hr width="200px">
+    </div>
 </body>
 
 </html>
