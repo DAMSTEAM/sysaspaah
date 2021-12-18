@@ -81,17 +81,29 @@ class Create extends Component
                 'timer' => 3000,
                 'toast' => false,
                 'text' => 'Se registró correctamente a la persona',
-            ], '/personas');
+            ], '/inscripciones');
         } else {
-            $this->alert('error', 'Ocurrió un error', [
-                'position' => 'center',
-                'timer'  => 5000,
-                'toast' => false,
-                'showConfirmButton' => true,
-                'onConfirmed' => '',
-                'text' => 'Seleccione otra persona, la persona ya está inscrita',
-                'confirmButtonColor' => '#3085d6'
-            ]);
+            if($personaIns->ES_INSCRIPCION == '0') {
+                $personaIns->update([
+                    'ES_INSCRIPCION' => '3'
+                ]);
+                $this->flash('success','¡Se registró!', [
+                    'position' => 'center',
+                    'timer' => 3000,
+                    'toast' => false,
+                    'text' => 'Se aperturó la inscripción',
+                ], '/inscripciones');
+            } else {
+                $this->alert('error', 'Ocurrió un error', [
+                    'position' => 'center',
+                    'timer'  => 5000,
+                    'toast' => false,
+                    'showConfirmButton' => true,
+                    'onConfirmed' => '',
+                    'text' => 'Seleccione otra persona, la persona ya está inscrita',
+                    'confirmButtonColor' => '#3085d6'
+                ]);
+            }
         }
     }
 

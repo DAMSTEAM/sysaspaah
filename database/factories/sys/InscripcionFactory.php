@@ -22,7 +22,7 @@ class InscripcionFactory extends Factory
         return [
             'ES_INSCRIPCION' => '3',
             'FK_INGRESO' => Ingreso::all()->random()->ID_INGRESO,
-            'FK_SOLICITADO' => $this->faker->unique()->numberBetween(2, Persona::count()),
+            'FK_SOLICITADO' => $this->faker->unique()->numberBetween(1, Persona::count()),
             'FK_APROBADO' => null,
         ];
     }
