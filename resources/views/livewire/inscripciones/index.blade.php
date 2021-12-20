@@ -44,7 +44,7 @@
             @foreach($inscripciones as $inscripcion)
             <tr class="text-center">
                 <td>{{ $inscripcion->ID_INSCRIPCION }}</td>
-                <td>{{ $inscripcion->personaSolicitado->NO_SOCIO }}</td>
+                <td>({{ $inscripcion->personaSolicitado->ID_PERSONA }}) {{ $inscripcion->personaSolicitado->NO_SOCIO }}</td>
                 <td>
                     @if (empty($inscripcion->personaAprobado->NO_SOCIO))
                     Sin aprobación

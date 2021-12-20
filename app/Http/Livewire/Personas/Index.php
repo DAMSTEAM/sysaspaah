@@ -56,6 +56,7 @@ class Index extends Component
     {
         $this->ID_PERSONA = $id;
 
+        /* para validar los estados de las insripciones agregar mas where a la consulta */
         $personaCurso = Inscripcion::where('FK_SOLICITADO', '=', $id)->where('ES_INSCRIPCION', '=', '3')->first();
 
         if (empty($personaCurso)) {
